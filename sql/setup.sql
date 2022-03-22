@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS publishers CASCADE; 
 DROP TABLE IF EXISTS authors CASCADE; 
 DROP TABLE IF EXISTS reviewers CASCADE; 
+DROP TABLE IF EXISTS books CASCADE; 
 
 -- setting up tables
 CREATE TABLE publishers (
@@ -24,6 +25,17 @@ CREATE TABLE reviewers (
     reviewer_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name TEXT NOT NULL,
     company TEXT NOT NULL
+);
+
+-- books table
+CREATE TABLE books (
+    book_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    title TEXT NOT NULL,
+    publisher_id BIGINT NOT NULL,
+    released INT NOT NULL,
+    CONSTRAINT fk_publisher
+        FOREIGN KEY (publisher_id)
+            REFERENCES publishers(publisher_id)
 );
 
 -- seeding some data 
@@ -54,3 +66,8 @@ VALUES
     ('Kevin', 'Meta'),
     ('Bailey', 'Netflix');
 
+INSERT INTO
+    books (title, publisher_id, released)
+VALUES
+    ('Data Structures and Algorithms', '2', '2018');
+    
