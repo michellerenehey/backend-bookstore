@@ -21,4 +21,16 @@ describe('bookstore routes', () => {
     const res = await request(app).post('/api/v1/reviewers').send(expected);
     expect(res.body).toEqual({ reviewer_id: expect.any(String), ...expected });
   });
+
+  it('gets a list of reviewers', async () => {
+    const expected = [
+      { reviewer_id: '1', name: 'Michelle', company: 'Google' },
+      { reviewer_id: '2', name: 'Brett', company: 'Tesla' },
+      { reviewer_id: '3', name: 'Kevin', company: 'Meta' },
+      { reviewer_id: '4', name: 'Bailey', company: 'Netflix' },
+    ];
+
+    const res = await request(app).get('/api/v1/reviewers');
+    expect(res.body).toEqual(expected);
+  });
 });
