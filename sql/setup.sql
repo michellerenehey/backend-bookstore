@@ -54,7 +54,8 @@ CREATE TABLE reviews (
             REFERENCES reviewers(reviewer_id)
 );
 
--- seeding some data 
+-- seeding some data
+-- publisher data 
 INSERT INTO 
     publishers (name, city, state, country)
 VALUES
@@ -82,6 +83,7 @@ VALUES
     ('Kevin', 'Meta'),
     ('Bailey', 'Netflix');
 
+-- books seeded data
 INSERT INTO
     books (title, publisher_id, released)
 VALUES
