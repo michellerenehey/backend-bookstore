@@ -69,5 +69,8 @@ VALUES
 INSERT INTO
     books (title, publisher_id, released)
 VALUES
-    ('Data Structures and Algorithms', '2', '2018');
+    ('Data Structures and Algorithms', '2', '2018'),
+    ('How to Graduate Alchemy', '1', '2018'),
+    ('What is a Div', '3', '2022'),
+    ('To Div or Not to Div', '3', '2021');
     
