@@ -13,6 +13,13 @@ describe('bookstore routes', () => {
   });
 
   it('creates a review', async () => {
-    const expected = {};
+    const expected = {
+      rating: 1,
+      reviewer_id: '4',
+      review: 'Worst. Book. Ever.',
+      book_id: '3',
+    };
+    const res = await request(app).post('/api/v1/reviews').send(expected);
+    expect(res.body).toEqual({ review_id: expect.any(String), ...expected });
   });
 });
