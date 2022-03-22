@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS publishers CASCADE;
 DROP TABLE IF EXISTS authors CASCADE; 
 DROP TABLE IF EXISTS reviewers CASCADE; 
 DROP TABLE IF EXISTS books CASCADE; 
+DROP TABLE IF EXISTS reviews CASCADE; 
 
 -- setting up tables
 CREATE TABLE publishers (
@@ -32,10 +33,25 @@ CREATE TABLE books (
     book_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     title TEXT NOT NULL,
     publisher_id BIGINT NOT NULL,
-    released INT NOT NULL,
+    released INT NOT NULL CHECK (released BETWEEN 1000 AND 3000), 
     CONSTRAINT fk_publisher
         FOREIGN KEY (publisher_id)
             REFERENCES publishers(publisher_id)
+);
+
+-- reviews table
+CREATE TABLE reviews (
+    review_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    rating INT NOT NULL CHECK (rating<=5),
+    reviewer_id BIGINT NOT NULL,
+    review VARCHAR(140) NOT NULL,
+    book_id BIGINT NOT NULL,
+    CONSTRAINT fk_book
+        FOREIGN KEY (book_id)
+            REFERENCES books(book_id),
+    CONSTRAINT fk_reviewer
+        FOREIGN KEY (reviewer_id)
+            REFERENCES reviewers(reviewer_id)
 );
 
 -- seeding some data 
@@ -74,3 +90,9 @@ VALUES
     ('What is a Div', '3', '2022'),
     ('To Div or Not to Div', '3', '2021');
     
+INSERT INTO
+    reviews (rating, reviewer_id, review, book_id)
+VALUES
+    ('5', '1', 'Very confusing', '1'),
+    ('3', '2', 'Still dont know what a div is', '2'),
+    ('4', '3', 'How do you even center it?', '3');
