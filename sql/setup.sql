@@ -33,7 +33,7 @@ VALUES
 INSERT INTO
     authors (name, dob, pob)
 VALUES
-    ('Ernest Hemingway', DATE '1899-07-21', 'Oakpark, IL'),
-    ('Margaret Atwood', DATE '1939-11-18', 'Ottawa, CAN'),
-    ('Julie Nisbit', DATE '2001-07-04', 'Santa Barbara, CA');
+    ('Ernest Hemingway', '7/21/1899', 'Oakpark, IL'),
+    ('Margaret Atwood', '11/18/1939', 'Ottawa, CAN'),
+    ('Julie Nisbit', '7/4/2001', 'Santa Barbara, CA');
 
