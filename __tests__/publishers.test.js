@@ -42,7 +42,7 @@ describe('bookstore routes', () => {
       country: 'USA',
       books: [{ book_id: '2', title: 'How to Graduate Alchemy' }],
     };
-    const res = await request(app).get('/api/v1/publishers/1/books');
+    const res = await request(app).get('/api/v1/publishers/1');
     expect(res.body).toEqual(expected);
   });
 });
