@@ -32,4 +32,17 @@ describe('bookstore routes', () => {
     const res = await request(app).get('/api/v1/publishers');
     expect(res.body).toEqual(expected);
   });
+
+  it('get publisher by id', async () => {
+    const expected = {
+      publisher_id: '1',
+      name: 'Penguin Books',
+      city: 'New York',
+      state: 'NY',
+      country: 'USA',
+      books: [{ book_id: '2', title: 'How to Graduate Alchemy' }],
+    };
+    const res = await request(app).get('/api/v1/publishers/1/books');
+    expect(res.body).toEqual(expected);
+  });
 });
