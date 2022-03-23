@@ -31,4 +31,15 @@ describe('bookstore routes', () => {
     const res = await request(app).get('/api/v1/authors');
     expect(res.body).toEqual(expected);
   });
+
+  it('gets author by id', async () => {
+    const expected = {
+      name: 'Ernest Hemingway',
+      dob: '7/21/1899',
+      pob: 'Oakpark, IL',
+      books: [
+        { book_id: '2', title: 'How to Graduate Alchemy', released: '2018' },
+      ],
+    };
+  });
 });
