@@ -3,6 +3,7 @@ DROP TABLE IF EXISTS authors CASCADE;
 DROP TABLE IF EXISTS reviewers CASCADE; 
 DROP TABLE IF EXISTS books CASCADE; 
 DROP TABLE IF EXISTS reviews CASCADE; 
+DROP TABLE IF EXISTS author_book CASCADE; 
 
 -- setting up tables
 CREATE TABLE publishers (
@@ -54,6 +55,12 @@ CREATE TABLE reviews (
             REFERENCES reviewers(reviewer_id)
 );
 
+-- author and book relation table
+CREATE TABLE author_book (
+    author_id BIGINT REFERENCES authors (author_id),
+    book_id BIGINT REFERENCES books (book_id)
+);
+
 -- seeding some data
 -- publisher data 
 INSERT INTO 
@@ -98,3 +105,11 @@ VALUES
     ('5', '1', 'Very confusing', '1'),
     ('3', '2', 'Still dont know what a div is', '2'),
     ('4', '3', 'How do you even center it?', '3');
+
+-- seed data for books and authors relation table
+INSERT INTO 
+    author_book (author_id, book_id)
+VALUES
+    (1, 2),
+    (3, 2),
+    (2, 3);

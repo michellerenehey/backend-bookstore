@@ -50,4 +50,26 @@ describe('bookstore routes', () => {
     const res = await request(app).get('/api/v1/books');
     expect(res.body).toEqual(expected);
   });
+
+  it('gets a single book by id', async () => {
+    const expected = {
+      book_id: '3',
+      title: 'What is a Div',
+      released: 2022,
+      publisher: { publisher_id: '3', name: 'Harry Potter Publisher' },
+      authors: [{ author_id: '2', name: 'Margaret Atwood' }],
+      reviews: [
+        {
+          review_id: '3',
+          rating: 4,
+          review: 'How do you even center it?',
+          reviewer: { reviewer_id: '3', name: 'Kevin' },
+        },
+      ],
+    };
+
+    const res = await request(app).get('/api/v1/books/3');
+    console.dir(res.body, { depth: null });
+    expect(res.body).toEqual(expected);
+  });
 });
