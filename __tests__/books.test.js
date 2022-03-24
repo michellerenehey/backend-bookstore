@@ -69,7 +69,6 @@ describe('bookstore routes', () => {
     };
 
     const res = await request(app).get('/api/v1/books/3');
-    console.dir(res.body, { depth: null });
     expect(res.body).toEqual(expected);
   });
 });
