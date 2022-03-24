@@ -2,6 +2,7 @@ const pool = require('../lib/utils/pool');
 const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
+const Reviewer = require('../lib/models/Reviewer');
 
 describe('bookstore routes', () => {
   beforeEach(() => {
@@ -50,6 +51,19 @@ describe('bookstore routes', () => {
       ],
     };
     const res = await request(app).get('/api/v1/reviewers/1');
+    expect(res.body).toEqual(expected);
+  });
+
+  it('should edit by id', async () => {
+    const expected = {
+      reviewer_id: '1',
+      name: 'Michelle',
+      company: 'Netflix',
+    };
+    const res = await request(app)
+      .patch(`/api/v1/reviewers/1`)
+      .send({ company: 'Netflix' });
+    console.log('res.body', res.body);
     expect(res.body).toEqual(expected);
   });
 });
