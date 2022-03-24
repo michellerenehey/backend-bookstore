@@ -61,9 +61,8 @@ describe('bookstore routes', () => {
       company: 'Netflix',
     };
     const res = await request(app)
-      .patch(`/api/v1/reviewers/1`)
+      .patch('/api/v1/reviewers/1')
       .send({ company: 'Netflix' });
-    console.log('res.body', res.body);
     expect(res.body).toEqual(expected);
   });
 });

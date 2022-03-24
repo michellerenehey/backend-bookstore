@@ -2,6 +2,7 @@ const pool = require('../lib/utils/pool');
 const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
+const Review = require('../lib/models/Review');
 
 describe('bookstore routes', () => {
   beforeEach(() => {
@@ -49,5 +50,27 @@ describe('bookstore routes', () => {
     ];
     const res = await request(app).get('/api/v1/reviews');
     expect(res.body).toEqual(expected);
+  });
+
+  it('deletes a review by id', async () => {
+    // const expected = [
+    //   {
+    //     review_id: '2',
+    //     rating: 3,
+    //     reviewer_id: '2',
+    //     review: 'Still dont know what a div is',
+    //     book_id: '2',
+    //   },
+    //   {
+    //     review_id: '3',
+    //     rating: 4,
+    //     reviewer_id: '3',
+    //     review: 'How do you even center it?',
+    //     book_id: '3',
+    //   },
+    // ];
+    const res = await request(app).delete('/api/v1/reviews/1');
+    const reviews = await Review.findAll();
+    expect(reviews).not.toContain(res.body);
   });
 });
