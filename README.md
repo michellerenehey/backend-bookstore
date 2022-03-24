@@ -1,6 +1,6 @@
 # backend-bookstore
 
-<p>Created a backend API vertically from scratch for a bookstore </p>
+<p>Created a backend bookstore API from scratch. Project and testing created vertically. </p>
 
 ## Created BY
 
@@ -22,6 +22,16 @@ GitHub: <a href = "https://github.com/kevindo1">https://github.com/kevindo1</a>
 Brett Seifried
 <br>
 GitHub: <a href = "https://github.com/brettseifried">https://github.com/brettseifried</a>
+
+## Project Routes: 
+<p>/api/v1/publishers</p>
+<br>
+<p>/api/v1/reviewers</p>
+<br>
+<p>/api/v1/books</p>
+<br>
+<p>/api/v1/reviews</p>
+<br>
 
 <ul>
     <li>User can get a list of Publishers</li>
