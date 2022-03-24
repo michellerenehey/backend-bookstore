@@ -46,6 +46,7 @@ GitHub: <a href = "https://github.com/brettseifried">https://github.com/brettsei
     <li>End-to-end (E2E) tests exist for all the supported routes</li>
     <li>API is deployed to Heroku</li>
 </ul>
-## ER Model
+
+## ER Model:
 
 ![ERM](ER_model.png)
