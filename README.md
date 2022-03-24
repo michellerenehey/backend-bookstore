@@ -25,14 +25,11 @@ GitHub: <a href = "https://github.com/brettseifried">https://github.com/brettsei
 
 ## Project Routes: 
 <p>/api/v1/publishers</p>
-<br>
 <p>/api/v1/reviewers</p>
-<br>
 <p>/api/v1/books</p>
-<br>
 <p>/api/v1/reviews</p>
-<br>
 
+## Project Goals:
 <ul>
     <li>User can get a list of Publishers</li>
     <li>User can get a list of Books</li>
