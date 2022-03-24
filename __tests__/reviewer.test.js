@@ -61,9 +61,21 @@ describe('bookstore routes', () => {
       company: 'Netflix',
     };
     const res = await request(app)
-      .patch(`/api/v1/reviewers/1`)
+      .patch('/api/v1/reviewers/1')
       .send({ company: 'Netflix' });
-    console.log('res.body', res.body);
     expect(res.body).toEqual(expected);
+  });
+
+  it('cannot delete a reviewer if reviews exist', async () => {
+    const reviewers = await Reviewer.findAll();
+    await request(app).delete('/api/v1/reviewers/2');
+    const notDeletedReviewers = await Reviewer.findAll();
+    expect(reviewers).toEqual(notDeletedReviewers);
+  });
+
+  it('deletes a reviewer if no review exists', async () => {
+    const res = await request(app).delete('/api/v1/reviewers/4');
+    const reviewers = await Reviewer.findAll();
+    expect(reviewers).not.toEqual(res.body);
   });
 });
