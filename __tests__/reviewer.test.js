@@ -34,7 +34,22 @@ describe('bookstore routes', () => {
     expect(res.body).toEqual(expected);
   });
 
-  // it('gets reviewer by id', async () => {
-  //   const expected
-  // })
+  it('gets reviewer by id', async () => {
+    const expected = {
+      reviewer_id: '1',
+      name: 'Michelle',
+      company: 'Google',
+      reviews: [
+        {
+          review_id: '1',
+          rating: 5,
+          review: 'Very confusing',
+          book_id: '1',
+          title: 'Data Structures and Algorithms',
+        },
+      ],
+    };
+    const res = await request(app).get('/api/v1/reviewers/1');
+    expect(res.body).toEqual(expected);
+  });
 });
