@@ -33,4 +33,8 @@ describe('bookstore routes', () => {
     const res = await request(app).get('/api/v1/reviewers');
     expect(res.body).toEqual(expected);
   });
+
+  // it('gets reviewer by id', async () => {
+  //   const expected
+  // })
 });
